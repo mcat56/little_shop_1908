@@ -18,7 +18,7 @@ RSpec.describe "As a Visitor" do
         expect(current_path).to eq("/items/#{@tire.id}/edit")
         expect(page).to have_link("Gatorskins")
         expect(find_field('Name').value).to eq "Gatorskins"
-        expect(find_field('Price').value).to eq '100'
+        expect(find_field('Price').value).to eq '$100.00'
         expect(find_field('Description').value).to eq "They'll never pop!"
         expect(find_field('Image').value).to eq("https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588")
         expect(find_field('Inventory').value).to eq '12'
@@ -30,7 +30,7 @@ RSpec.describe "As a Visitor" do
         click_on "Edit Item"
 
         fill_in 'Name', with: "GatorSkins"
-        fill_in 'Price', with: 110
+        fill_in 'Price', with: 110.00
         fill_in 'Description', with: "They're a bit more expensive, and they kinda do pop sometimes, but whatevs.. this is retail."
         fill_in 'Image', with: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588"
         fill_in 'Inventory', with: 11
@@ -40,10 +40,10 @@ RSpec.describe "As a Visitor" do
         expect(current_path).to eq("/items/#{@tire.id}")
         expect(page).to have_content("GatorSkins")
         expect(page).to_not have_content("Gatorskins")
-        expect(page).to have_content("Price: $110")
+        expect(page).to have_content("Price: $110.00")
         expect(page).to have_content("Inventory: 11")
         expect(page).to_not have_content("Inventory: 12")
-        expect(page).to_not have_content("Price: $100")
+        expect(page).to_not have_content("Price: $100.00")
         expect(page).to have_content("They're a bit more expensive, and they kinda do pop sometimes, but whatevs.. this is retail.")
         expect(page).to_not have_content("They'll never pop!")
       end

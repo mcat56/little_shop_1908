@@ -16,7 +16,7 @@ RSpec.describe "Create Merchant Items" do
       visit "/merchants/#{@brian.id}/items"
 
       name = "Chamois Buttr"
-      price = 18
+      price = 18.00
       description = "No more chaffin'!"
       image_url = "https://images-na.ssl-images-amazon.com/images/I/51HMpDXItgL._SX569_.jpg"
       inventory = 25
