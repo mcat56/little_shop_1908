@@ -24,7 +24,7 @@ RSpec.describe 'as a visitor I can remove an item from the cart' do
     visit '/cart'
 
     within "#cart_item-#{@dog_bone.id}" do
-      click_button "Remove Item from Cart"
+      click_button "Remove Item"
     end
 
     expect(current_path).to eq('/cart')

@@ -2,18 +2,34 @@
   <h1>Your cart is empty!</h1>
 <% else %>
   <h1>Cart Items</h1>
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Sold by</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Remove Item</th>
+        </tr>
+      </thead>
+      <tbody>
     <% @items.each do |item| %>
-      <section id= "cart_item-<%= item.id %>"
-        <h2><%= item.name %></h2>
-        <img src= <%= item.image %> style='height:250px; width:250px;'>
-        <p>Sold by: <%= item.merchant.name %></p>
-        <p>Price: <%= number_to_currency(item.price) %> </p>
-        <p>Quantity: <%= cart.contents[item.id.to_s] %></p>
-        <%= button_to '-', "/cart/#{item.id}/decrement", method: :patch %><%= button_to '+', "/cart/#{item.id}/increment", method: :patch %>
-        <h4>Subtotal: <%=  number_to_currency(cart.subtotal(item.id, cart.contents[item.id.to_s])) %></h4>
-        <%= button_to 'Remove Item from Cart', "/cart/#{item.id}", method: :delete%>
-        <% end %>
-      </section>
+    <section id= "cart_item-<%= item.id %>"
+      <tr>
+          <td><%= item.name %><br><img src= <%= item.image %> style='height:150px; width:150px;'></td>
+          <td><%= item.merchant.name %></td>
+          <td><%= number_to_currency(item.price) %> </td>
+          <td><%= cart.contents[item.id.to_s] %><br><%= button_to '-', "/cart/#{item.id}/decrement", method: :patch %><br><%= button_to '+', "/cart/#{item.id}/increment", method: :patch %></td>
+          <td><%=  number_to_currency(cart.subtotal(item.id, cart.contents[item.id.to_s])) %></td>
+          <td ><%= button_to 'Remove Item', "/cart/#{item.id}", method: :delete%></td>
+      </tr>
+    </section>
+    <% end %>
+  </tbody>
+</table>
+</div>
     <h2>Grand Total: <%= number_to_currency(cart.grand_total) %> </h2>
     <%= button_to 'Empty Cart', '/cart', method: :destroy %>
 

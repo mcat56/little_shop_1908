@@ -14,22 +14,22 @@ RSpec.describe 'As a visitor I can change the item quantity on the cart index pa
     within "#cart_item-#{@chain.id}" do
       click_button '+'
 
-      expect(page).to have_content("Quantity: 2")
+      expect(page).to have_content("2")
 
       click_button '+'
 
-      expect(page).to have_content("Quantity: 3")
+      expect(page).to have_content("3")
       click_button '+'
 
-      expect(page).to have_content("Quantity: 4")
-
-      click_button '+'
-
-      expect(page).to have_content("Quantity: 5")
+      expect(page).to have_content("4")
 
       click_button '+'
 
-      expect(page).to have_content("Quantity: 5")
+      expect(page).to have_content("5")
+
+      click_button '+'
+
+      expect(page).to have_content(" 5")
     end
 
     expect(page).to have_content('You have reached the Chain inventory limit.')
@@ -41,11 +41,11 @@ RSpec.describe 'As a visitor I can change the item quantity on the cart index pa
     within "#cart_item-#{@chain.id}" do
       click_button '-'
 
-      expect(page).to have_content("Quantity: 0")
+      expect(page).to have_content("0")
 
       click_button '-'
 
-      expect(page).to have_content("Quantity: 0")
+      expect(page).to have_content("0")
     end
 
     expect(page).to have_content('There are no more Chains to remove.')
